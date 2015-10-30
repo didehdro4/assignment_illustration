@@ -55,12 +55,14 @@ function draw() {
 
 
 	// draw Player
-	if (mouseIsPressed)
-	{
+
 		if (mouseX < 100)
-			image(playerImg, mouseX-80, 370)
+			image(playerImg, mouseX-75, 370)
+		if (mouseX > 100 && mouseX < 150)
+			image(playerImg, 23, 370)
+		if (mouseIsPressed){
 		if (mouseX > 100)
-			image(playerImage, 30, 355)
+			image(playerImage, 45, 355)
 		}
 
 	// draw ball
@@ -70,7 +72,8 @@ function draw() {
 			var ballX = mouseX
 			var ballY = mouseY
 		}
-			if (mouseX >= 665){
+			if (mouseX > 540 && mouseX < 750 &&
+				mouseY > 330 && mouseY < 480){
 				var ballX = 665
 				var ballY = 430
 			}
@@ -88,12 +91,14 @@ function draw() {
 
 	// draw crowd
 	image(crowdImg, 10, 217);
-	if (ballX > 640) {
+	if (ballX > 540 && ballX < 800 &&
+		ballY > 330 && ballY < 480) {
 		image(crowdHandsImg, 5.5, 250)
 	}
 
 	// draw fireworks
-	if (ballX > 640)	{
+	if (ballX > 540 && ballX < 800 &&
+		ballY > 330 && ballY < 480)	{
 		image(bluefwImg, 80, 88)
 		image(greenfwImg, 330, 98)
 		image(pinkfwImg, 620, 76)
