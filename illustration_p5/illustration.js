@@ -12,6 +12,9 @@ var bluefwImg;
 var greenfwImg;
 var pinkfwImg;
 
+var score = 0;
+var kicked = 0;
+
 var cloudX = -100;
 var secondCloudX = 600;
 
@@ -56,29 +59,33 @@ function draw() {
 
 	// draw Player
 
-		if (mouseX < 100)
-			image(playerImg, mouseX-75, 370)
-		if (mouseX > 100 && mouseX < 150)
-			image(playerImg, 23, 370)
-		if (mouseIsPressed){
-		if (mouseX > 100)
+	if (mouseX < 100) {
+		image(playerImg, mouseX-75, 370)
+	}
+
+	if (mouseIsPressed) {
+		if (mouseX > 100) {
 			image(playerImage, 45, 355)
 		}
+	}
+
 
 	// draw ball
-	if (mouseX > 105)
-	{if (mouseIsPressed) {
-		if (mouseX >= 105){
-			var ballX = mouseX
-			var ballY = mouseY
-		}
+	if (mouseX > 105) {
+		if (mouseIsPressed) {
+			if (mouseX < 200) {
+				kicked = 1;
+			}
+			if (mouseX >= 105) {
+				var ballX = mouseX
+				var ballY = mouseY
+			}
 			if (mouseX > 540 && mouseX < 750 &&
 				mouseY > 330 && mouseY < 480){
 				var ballX = 665
 				var ballY = 430
 			}
-		}
-		else{
+		}else {
 		var ballX=105
 		var ballY=475}
 			image(ballImg, ballX, ballY)
@@ -102,7 +109,18 @@ function draw() {
 		image(bluefwImg, 80, 88)
 		image(greenfwImg, 330, 98)
 		image(pinkfwImg, 620, 76)
+
+		if (kicked == 1) {
+			score++;
+		}
+
+		kicked = 0;
 	}
 
 
+	// draw score
+	textSize(32);
+	text(score, 10, 30);
+
+	console.log(score);
 }
